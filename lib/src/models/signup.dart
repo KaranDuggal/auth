@@ -34,10 +34,10 @@ class Signup {
 
 class Data {
     Data({
-        /* required */ this.firstName,
-        /* required */ this.lastName,
-        /* required */ this.email,
-        /* required */ this.password,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
     });
 
     String ? firstName;

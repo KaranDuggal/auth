@@ -25,7 +25,6 @@ class Login {
         success: json["success"],
         message: json["message"],
         data : json['data'] != null ? new Data.fromJson(json['data']) : null,
-        // data: Data.fromJson(json["data"]),
         token: json["token"],
     );
 

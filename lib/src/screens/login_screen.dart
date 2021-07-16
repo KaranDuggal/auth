@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({ Key? key }) : super(key: key);
   
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -80,11 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             "email":email,
                             "password":password
                           });
-                          var dataaa = Login.fromJson(apiData);
-                          print(" data ${dataaa.data}");
-                          print("token ${dataaa.token}");
+                          var data = Login.fromJson(apiData);
                           ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('${dataaa.message}')));
+                              .showSnackBar(SnackBar(content: Text('${data.message}')));
                         }
                       },
                       child: Text('Submit'),

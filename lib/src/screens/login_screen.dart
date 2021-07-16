@@ -1,5 +1,6 @@
 
 import 'package:auth/src/models/login.dart';
+import 'package:auth/src/screens/signup_screen.dart';
 import 'package:auth/src/servies/api_service.dart';
 import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
@@ -84,7 +85,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               .showSnackBar(SnackBar(content: Text('${data.message}')));
                         }
                       },
-                      child: Text('Submit'),
+                      child: Text('Login'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
+                      },
+                      child: Text('Signup'),
                     ),
                   ),
                 ],

@@ -22,7 +22,7 @@ class Signup {
     factory Signup.fromJson(Map<String, dynamic> json) => Signup(
         success: json["success"],
         message: json["message"],
-        // data: Data.fromJson(json["data"]),
+        data : json['data'] != null ? new Data.fromJson(json['data']) : null,
     );
 
     Map<String, dynamic> toJson() => {

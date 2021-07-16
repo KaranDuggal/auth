@@ -1,11 +1,10 @@
 
+import 'package:auth/src/models/signup.dart';
 import 'package:auth/src/servies/api_service.dart';
 import 'package:flutter/material.dart';
-
-
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({ Key? key }) : super(key: key);
+  
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -13,6 +12,10 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  var firstName = '';
+  var lastName = '';
+  var email = '';
+  var password = '';
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -32,13 +35,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       autofocus: true,
                       textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
-                      onTap: () {},
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.face),
-                        labelText: 'Enter Name',
-                        hintText: "Enter Your Name",
+                        labelText: 'First Name',
+                        hintText: "Enter First Name",
                         border: OutlineInputBorder()
                       ),
+                      onChanged: (value){
+                        firstName = value;
+                      },
+                      validator: (value){
+                        if(value!.length<3){
+                          return "Invalid Name";
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   Padding(
@@ -47,11 +58,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       autofocus: true,
                       textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
-                      onTap: () {},
+                      onChanged: (value){
+                        lastName = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.face),
+                        labelText: 'Last Name',
+                        hintText: "Enter Last Name",
+                        border: OutlineInputBorder()
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextFormField(
+                      autofocus: true,
+                      keyboardType: TextInputType.emailAddress,
+                      textCapitalization: TextCapitalization.words,
+                      textAlignVertical: TextAlignVertical.center,
+                      onChanged: (value){
+                        email = value;
+                      },
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.face),
                         labelText: 'Enter Email',
-                        hintText: "Enter Your Email",
+                        hintText: "Enter Email",
                         border: OutlineInputBorder()
                       ),
                       validator: (value){
@@ -71,45 +102,36 @@ class _LoginScreenState extends State<LoginScreen> {
                       autofocus: true,
                       textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
-                      onTap: () {},
+                      onChanged: (value){
+                        password = value;
+                      },
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.face),
                         labelText: 'Password',
-                        hintText: "Enter Your Password",
+                        hintText: "Enter Password",
                         border: OutlineInputBorder()
                       ),
                     ),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    validator: (value) {
-                      if (value!.length < 9) {
-                        return 'Phone number must be 9 digits or longer';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.phone),
-                        labelText: 'Phone number',
-                        hintText: "Enter your phone number",
-                        border: OutlineInputBorder()),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          var apiData = await ApiService().post("auth/signup", {
+                            "firstName":firstName,
+                            "lastName":lastName,
+                            "email":email,
+                            "password":password
+                          });
+                          var dataaa = Signup.fromJson(apiData);
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text('${dataaa.message}')));
+                        }
+                      },
+                      child: Text('Submit'),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        post();
-                        // ScaffoldMessenger.of(context)
-                        //     .showSnackBar(SnackBar(content: Text('Processing Data')));
-                      }
-                    },
-                    child: Text('Submit'),
-                  ),
-                ),
                 ],
               )
             ),

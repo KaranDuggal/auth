@@ -6,4 +6,4 @@ class ApiService{
     Response apiData = await dio.post('${MyConstant.localBaseURL}$_url',data: data);
     return apiData.data;
   }
-}
+}           

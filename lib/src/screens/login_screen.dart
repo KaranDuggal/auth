@@ -12,8 +12,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  var email = '';
-  var password = '';
+  String email = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         email = value;
                       },
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'Enter Email',
                         hintText: "Enter Email",
                         border: OutlineInputBorder()
@@ -58,13 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       autofocus: true,
-                      textCapitalization: TextCapitalization.words,
+                      // textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
                       onChanged: (value){
                         password = value;
                       },
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'Password',
                         hintText: "Enter Password",
                         border: OutlineInputBorder()
@@ -80,7 +80,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             "email":email,
                             "password":password
                           });
+                          print(apiData);
                           var data = Login.fromJson(apiData);
+                          print(data);
                           ScaffoldMessenger.of(context)
                               .showSnackBar(SnackBar(content: Text('${data.message}')));
                         }

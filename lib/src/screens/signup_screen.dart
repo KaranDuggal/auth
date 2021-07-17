@@ -13,10 +13,10 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  var firstName = '';
-  var lastName = '';
-  var email = '';
-  var password = '';
+  String firstName = '';
+  String lastName = '';
+  String email = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'First Name',
                         hintText: "Enter First Name",
                         border: OutlineInputBorder()
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         lastName = value;
                       },
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'Last Name',
                         hintText: "Enter Last Name",
                         border: OutlineInputBorder()
@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         email = value;
                       },
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'Enter Email',
                         hintText: "Enter Email",
                         border: OutlineInputBorder()
@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         password = value;
                       },
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.face),
+                        // prefixIcon: Icon(Icons.face),
                         labelText: 'Password',
                         hintText: "Enter Password",
                         border: OutlineInputBorder()

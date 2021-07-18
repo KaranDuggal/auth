@@ -65,11 +65,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 1.0,
                             ),
-                            Text("Karan Duggal",style: TextStyle(color: Colors.black,fontSize: 18.0,fontWeight: FontWeight.bold),),
+                            Text("Patwari",style: TextStyle(color: Colors.black,fontSize: 18.0,fontWeight: FontWeight.bold),),
                             SizedBox(
                               height: 5.0,
                             ),
-                            Text("Flutter Developer",style: TextStyle(color: Colors.grey/* ,fontSize: 12.0,fontWeight: FontWeight.bold */),),
+                            Text("Punjab Exam",style: TextStyle(color: Colors.grey/* ,fontSize: 12.0,fontWeight: FontWeight.bold */),),
                           ],
                         )
                       ]
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: (){
                           
                         },
-                        child:Text("data"),
+                        child:Text("Quizs"),
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))
                         ),

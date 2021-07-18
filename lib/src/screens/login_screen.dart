@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      resizeToAvoidBottomInset: false,
       body: Container(
         // padding: EdgeInsets.symmetric(
         //   vertical: 0,
@@ -56,15 +56,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(60),topRight:Radius.circular(60))
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(30),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
                       SizedBox(height: 60,),
                       Container(
-                        padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
                               color: Color.fromRGBO(225, 95, 27, 0.3),

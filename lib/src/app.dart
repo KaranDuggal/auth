@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: MyColors.red,
       ),
       // home: MyHomePage(title: "files done"),
-      initialRoute: '/home',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),

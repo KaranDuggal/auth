@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      SizedBox(height: 60,),
+                      SizedBox(height: 30,),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -116,9 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 40,),
+                      SizedBox(height: 25,),
                       Text("Forget password?",style: TextStyle(color: Colors.grey),),
-                      SizedBox(height: 40,),
+                      SizedBox(height: 25,),
                       InkWell(
                         onTap: ()async{
                           print("Login");
@@ -142,6 +142,32 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: Center(
                             child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      InkWell(
+                        onTap: ()async{
+                          if (_formKey.currentState!.validate()) {
+                            var apiData = await ApiService().post("auth/login", {
+                              "email":email,
+                              "password":password
+                            });
+                            print(apiData);
+                            var data = Login.fromJson(apiData);
+                            print(data);
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${data.message}')));
+                          }
+                        },
+                        child: Container(
+                          height: 50,
+                          margin: EdgeInsets.symmetric(horizontal: 50),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.blue
+                          ),
+                          child: Center(
+                            child: Text("SignUp",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
                           ),
                         ),
                       ),

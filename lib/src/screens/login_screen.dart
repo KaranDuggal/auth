@@ -1,5 +1,6 @@
 
 import 'package:auth/src/models/login.dart';
+import 'package:auth/src/screens/signup_screen.dart';
 import 'package:auth/src/servies/api_service.dart';
 import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
@@ -121,15 +122,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 25,),
                       InkWell(
                         onTap: ()async{
-                          print("Login");
                           if (_formKey.currentState!.validate()) {
                             var apiData = await ApiService().post("auth/login", {
                               "email":email,
                               "password":password
                             });
-                            print(apiData);
                             var data = Login.fromJson(apiData);
-                            print(data);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${data.message}')));
                           }
                         },
@@ -148,16 +146,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 20,),
                       InkWell(
                         onTap: ()async{
-                          if (_formKey.currentState!.validate()) {
-                            var apiData = await ApiService().post("auth/login", {
-                              "email":email,
-                              "password":password
-                            });
-                            print(apiData);
-                            var data = Login.fromJson(apiData);
-                            print(data);
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${data.message}')));
-                          }
+                          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up')));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
                         },
                         child: Container(
                           height: 50,
